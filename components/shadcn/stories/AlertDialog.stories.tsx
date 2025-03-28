@@ -3,7 +3,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import { AlertDialog } from "../wrappers/AlertDialog";
 
 const meta: Meta<typeof AlertDialog> = {
-  title: "Components/AlertDialog",
+  title: "shadcn/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
   argTypes: {
