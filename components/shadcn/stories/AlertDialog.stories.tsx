@@ -11,8 +11,6 @@ const meta: Meta<typeof AlertDialog> = {
       control: "select",
       options: ["default", "destructive", "outline", "secondary", "ghost", "link"],
     },
-    onAction: { action: "actionConfirmed" },
-    onOpenChange: { action: "openChanged" },
   },
 };
 
@@ -32,7 +30,7 @@ export const Basic: Story = {
 };
 
 // With custom trigger
-export const CustomTrigger: Story = {
+export const CustomTriggerText: Story = {
   args: {
     triggerText: "Delete Account",
     triggerVariant: "destructive",
@@ -43,7 +41,7 @@ export const CustomTrigger: Story = {
 };
 
 // With children as trigger
-export const WithCustomTriggerElement: Story = {
+export const CustomTriggerElement: Story = {
   args: {
     title: "Custom trigger dialog",
     description: "This dialog was triggered by a custom element",
