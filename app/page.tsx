@@ -1,14 +1,13 @@
 "use client";
-import AlertDialogEx from "@/components/shadcn/examples/AlertDialogEx";
-import DatePickerEx from "@/components/shadcn/examples/DatePickerEx";
-import DateRangePickerEx from "@/components/shadcn/examples/DateRangePickerEx";
+
+import { Button } from "@/components/shadcn/ui/button";
+import AlertDialog from "@/components/shadcn/wrappers/AlertDialog";
+import Dialog from "@/components/shadcn/wrappers/Dialog";
 
 export default function Home() {
   return (
-    <div>
-      <AlertDialogEx />
-      <DatePickerEx />
-      <DateRangePickerEx />
+    <div className="flex h-screen w-screen items-center justify-center">
+      <Button variant="secondary">Test Button</Button>
     </div>
   );
 }

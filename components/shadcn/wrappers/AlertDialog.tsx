@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  AlertDialog as ShadCnAlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
@@ -10,48 +9,36 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AlertDialog as ShadCnAlertDialog,
 } from "@/components/shadcn/ui/alert-dialog";
-import { Button, ButtonProps } from "@/components/shadcn/ui/button";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
-type AlertDialogWrapperProps = {
-  triggerText?: string;
-  triggerVariant?: ButtonProps["variant"];
-  triggerClassName?: string;
+/**
+<AlertDialog
+  trigger={<button>Delete a user</button>}
+  title="Delete a user"
+  description="Are you sure you want to delete the user"
+  actionText="Confirm"
+  onAction={() => {}}
+/>
+*/
+
+type AlertDialogProps = {
+  trigger: ReactNode;
   title: string;
   description: string;
   cancelText?: string;
   actionText: string;
   onAction: () => void;
-  children?: ReactNode;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
 };
 
-export function AlertDialog({
-  triggerText = "Open",
-  triggerVariant = "default",
-  triggerClassName = "",
-  title,
-  description,
-  cancelText = "Cancel",
-  actionText,
-  onAction,
-  children,
-  open,
-  onOpenChange,
-}: AlertDialogWrapperProps) {
+const AlertDialog: FC<AlertDialogProps> = (props) => {
+  const { title, description, trigger, cancelText = "Cancel", actionText, onAction } = props;
+
   return (
-    <ShadCnAlertDialog open={open} onOpenChange={onOpenChange}>
-      {children ? (
-        <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
-      ) : (
-        <AlertDialogTrigger asChild>
-          <Button variant={triggerVariant} className={triggerClassName}>
-            {triggerText}
-          </Button>
-        </AlertDialogTrigger>
-      )}
+    <ShadCnAlertDialog>
+      <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
@@ -64,4 +51,6 @@ export function AlertDialog({
       </AlertDialogContent>
     </ShadCnAlertDialog>
   );
-}
+};
+
+export default AlertDialog;
