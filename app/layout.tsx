@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SidebarProvider, SidebarTrigger } from "@/components/shadcn/ui/sidebar";
+import Sidebar from "@/components/shadcn/wrappers/Sidebar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +15,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="dark_">{children}</body>
+      <body className="dark_">
+        <SidebarProvider>
+          <Sidebar />
+
+          <main>
+            <SidebarTrigger />
+            {children}
+          </main>
+        </SidebarProvider>
+      </body>
     </html>
   );
 }
